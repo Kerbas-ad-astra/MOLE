@@ -23,6 +23,89 @@ Copy the contents of the zip file to your GameData directory. Be sure to overwri
 
 ---REVISION HISTORY---
 
+0.8.0.2
+
+Station Light
+- Reduced research cost and price to be in line with stock lights.
+- Moved tech node to Electrics (same as stock lights).
+
+MOH
+- Added TAC-LS recyclers to the Dolores Habitat configuration.
+- Renamed the Life Support converter (required for the KNUTS experiment when USI-LS is not installed) to KNUTS Processor.
+
+CTT
+- Added support for CTT. Tech nodes and parts: If a part isn't listed below, then it stays where it is (unless you have a mod installed that changes the tech node arrangements). MOLE parts should hover around Tier 4/Tier 5 by and large, but if you have suggestions for other CTT nodes for parts I'm happy to listen. :)
+Enhanced Survivability: Appaloosa, MK1-85 Heat Shield, Flight Control Package
+Simple Command Pods: Brumby
+
+Bug Fixes
+- Fixed an issue where players could not transfer crew out of a wet workshop that has been converted into a habitable module.
+- Fixed an issue where, if you have Pathfinder installed, reconfiguring the MOLE/MOH would not honor Pathfinder's settings for requiring resources and the proper skills to reconfigure the module.
+
+0.8.0.1
+- Fixed an issue where the Interstage Adapters required staging to complete.
+- Station light won't throw NREs when in the VAB/SPH if turned on.
+
+0.8.0 Outpost
+
+MOLE is getting closer to Core Complete! This release adds new parts including the Mark One Habitat.
+
+New Parts
+- Added the WBM-700 fuel tank, a 2.5m fuel tank that has a crew tunnel through its center.
+- Added the IA-25, a 2.5m Interstage Adapter. It's just like the IA-18, only bigger. Its central node is setup for 1.25m parts while its outer nodes are ready for 0.625m parts.
+- Added the Titan 2.5m Decouplatron, a 2.5m version of the 1.875m Titan Decouplatron. It can be a decoupler or separator.
+- Added the SPF-4 Solar Array, a large deployable solar array that's available sooner than the more capable SPF-8. The SPF-4 cannot be retracted, and it cannot track the sun. It is inspired by solar panels found on Skylab. NOTE: For symmetrical part installations, be sure to mirror the panels so they face the desired direction. You can do this by right-clicking the part and pressing "Mirror Panel."
+- Added the Mark One Habitat (MOH), a 1.875m habitat that sleeps 2 kerbals. It provides recycling capabilities depending upon the life support mod that you have installed. It has a Dolores Habitat configuration and a Wet Workshop config (that holds LiquidFuel/Oxidizer). With Pathfinder installed, the MOH can also become a Pathfinder Geology Lab, Ponderosa, and Pigpen, albeit with reduced capability due to its smaller size.
+
+Titan II Tanks
+- Renamed the Titan II line of tanks to the Konan tanks, in honor of the proposed Titan Barbarian.
+
+Station Experiments
+- Added the Kerbal Nutrition Utilization Transfer Study (KNUTS); it requires a Mark One Habitat, Mulch, and LabTime.
+
+0.7.8.1
+
+- Fixed an issue where the Bonus Science tab would break the MOLE Operations Manager in the VAB/SPH.
+- Fixed an issue where the light switch wasn't available in the context menu.
+- Fixed an issue where the MOLE Lab couldn't generate bonus science when there were no experiments in the lab.
+
+0.7.8
+
+Science System
+- Experiment Manifest and transfer screens now list the part they're associated with.
+- Fixed an issue where experiment info wasn't showing up in the VAB/SPH.
+- The Load Experiment window now appears slightly offset from the Manifest window to make it easier to distinguish that you're now loading experiments into the part.
+- The Transfer Experiment button now makes it more clear that it is a transfer experiment button.
+- In the VAB/SPH, the Experiment Manifest will show a new "Load Experiment" button.
+- You can now run/pause individual experiments.
+- Additional MOLE Labs can contribute to a lab currently running experiments as long as the extra labs don't have any experiments running.
+- Experiments now individually keep track of the resources they consume during research.
+- Added clarification to the MOLE Lab operations manager to make it clear that you will gain bonus science and generate LabTime independently of any running experiments.
+- The Experiment Lab will no longer stop if it, say, runs out of resources or the part doesn't have enough crew.
+- Improved rendering performance of the experiment windows.
+- Previously occupied experiment slots properly report as empty after the completed experiment's final transfer.
+- After the final transfer, experiments will show their results (via the stock experiment results window).
+- Added the ability to send an in-game email if the MOLE Lab suffers a catastrophic failure during research (assuming you have the "Parts Can Break" option set).
+- Added the ability to specify whether or not parts require resources to fix and/or parts can break. Currently this only applies to the MOLE Lab.
+- MOLE Lab repairs are working properly.
+
+Science Experiments
+
+Special thanks to DStaal for providing new science results and new experiments. Thanks DStaal! :)
+
+- Updated the science defs in the existing experiments.
+- Added Temperature Study, Thermal study, and Surface Construction Study, courtsey of the DStaal Institute of Technology.
+
+NOTE: Play balancing still needed! Help balance the cost/rewards of the experiments.
+NOTE: Due to the increasing number of experiments, you might want to lower your science rewards for your game.
+
+Power Generation
+- Decreased consumption rates on the MPUs. They'll last longer now.
+
+Bug Fixes
+- Fixed an issue where experiments wouldn't show up after reloading a craft.
+- Fixed an issue where upgradeable SAS units weren't upgrading.
+
 0.7.7
 - Added "skinMaxTemp" to the FCP, MK1 Docking Port, Appaloosa, Brumby, and Bigby Crew Module.
 - Added Bigby Crew Module to CLS.

@@ -6,6 +6,37 @@ A KSP mod that provides common functionality for mods by Wild Blue Industries.
 
 Copy the contents of the mod's GameData directory into your GameData folder.
 
+1.3.8
+- Fixed an issue with crew transfers not working after changing a part's crew capacity during a template switch.
+
+1.3.7
+- Fixed an issue with WBILight throwing NREs in the VAB/SPH.
+
+1.3.6
+- Minor bug fixes
+
+1.3.5
+- Fixed an issue where lab experimetns would be completed before even being started.
+
+1.3.4
+- Fixed an issue where the "Bonus Science" tab would break the operations manager in the VAB/SPH.
+
+1.3.3 Science Overhaul
+
+- Experiment Manifest and transfer screens now list the part they're associated with.
+- Fixed an issue where experiment info wasn't showing up in the VAB/SPH.
+- The Load Experiment window now appears slightly offset from the Manifest window to make it easier to distinguish that you're now loading experiments into the part.
+- The Transfer Experiment button now makes it more clear that it is a transfer experiment button.
+- In the VAB/SPH, the Experiment Manifest will show a new "Load Experiment" button.
+- You can now run/pause individual experiments.
+- Changed how experiments check for and consume resources; they now go vessel-wide.
+- The Experiment Lab will no longer stop if it, say, runs out of resources or the part doesn't have enough crew.
+- Improved rendering performance of the experiment windows.
+- Fixed an issue where experiments wouldn't show up after reloading a craft.
+
+1.3.2
+- New props
+
 1.3.1
 - Added Local Operations Manager window to enable controlling all PartModules on all vessels within physics range that implement IOpsView. This is used by mods such as Pathfinder.
 - Added Slag and Konkrete resources, templates, and icons.

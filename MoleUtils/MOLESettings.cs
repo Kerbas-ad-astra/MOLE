@@ -44,9 +44,13 @@ namespace WildBlueIndustries
         base("MOLE Settings", 340, 100)
         {
             Resizable = false;
-            settingsPath = AssemblyLoader.loadedAssemblies.GetPathByType(typeof(MOLESettings)) + "/Settings.cfg";
-            loadSettings();
             HideCloseButton = true;
+
+            if (!Utils.IsModInstalled("Pathfinder"))
+            {
+                settingsPath = AssemblyLoader.loadedAssemblies.GetPathByType(typeof(MOLESettings)) + "/Settings.cfg";
+                loadSettings();
+            }
         }
 
         public override void DrawWindow()
@@ -67,14 +71,17 @@ namespace WildBlueIndustries
         {
             payToRemodel = GUILayout.Toggle(payToRemodel, "Require resources to reconfigure modules.");
             requireSkillCheck = GUILayout.Toggle(requireSkillCheck, "Require skill check to reconfigure modules.");
-//            GUILayout.FlexibleSpace();
-//            repairsRequireResources = GUILayout.Toggle(repairsRequireResources, "Repairs require resources.");
-//            partsCanBreak = GUILayout.Toggle(partsCanBreak, "Parts can break.");
+            GUILayout.FlexibleSpace();
+            repairsRequireResources = GUILayout.Toggle(repairsRequireResources, "Repairs require resources.");
+            partsCanBreak = GUILayout.Toggle(partsCanBreak, "Parts can break.");
 
             WBIAffordableSwitcher.payForReconfigure = payToRemodel;
             WBIAffordableSwitcher.checkForSkill = requireSkillCheck;
             WBITemplateConverter.payForReconfigure = payToRemodel;
             WBITemplateConverter.checkForSkill = requireSkillCheck;
+            WBIResourceConverter.repairsRequireResources = repairsRequireResources;
+            WBIResourceConverter.partsCanBreak = partsCanBreak;
+            WBIResourceConverter.requireSkillCheck = requireSkillCheck;
         }
 
         public override void SetVisible(bool newValue)
@@ -95,8 +102,8 @@ namespace WildBlueIndustries
             nodeSettings.name = "SETTINGS";
             nodeSettings.AddValue("payToRemodel", payToRemodel.ToString());
             nodeSettings.AddValue("requireSkillCheck", requireSkillCheck.ToString());
-//            nodeSettings.AddValue("repairsRequireResources", repairsRequireResources.ToString());
-//            nodeSettings.AddValue("partsCanBreak;", partsCanBreak.ToString());
+            nodeSettings.AddValue("repairsRequireResources", repairsRequireResources.ToString());
+            nodeSettings.AddValue("partsCanBreak;", partsCanBreak.ToString());
             nodeSettings.Save(settingsPath);
         }
 
@@ -121,7 +128,6 @@ namespace WildBlueIndustries
                 else
                     requireSkillCheck = WBIAffordableSwitcher.checkForSkill;
 
-                /*
                 value = nodeSettings.GetValue("repairsRequireResources");
                 if (string.IsNullOrEmpty(value) == false)
                     repairsRequireResources = bool.Parse(value);
@@ -129,18 +135,22 @@ namespace WildBlueIndustries
                 value = nodeSettings.GetValue("partsCanBreak");
                 if (string.IsNullOrEmpty(value) == false)
                     partsCanBreak = bool.Parse(value);
-                 */
             }
             else
             {
                 payToRemodel = WBIAffordableSwitcher.payForReconfigure;
                 requireSkillCheck = WBIAffordableSwitcher.checkForSkill;
+                partsCanBreak = WBIResourceConverter.partsCanBreak;
+                requireSkillCheck = WBIResourceConverter.requireSkillCheck;
             }
 
             WBIAffordableSwitcher.payForReconfigure = payToRemodel;
             WBIAffordableSwitcher.checkForSkill = requireSkillCheck;
             WBITemplateConverter.payForReconfigure = payToRemodel;
             WBITemplateConverter.checkForSkill = requireSkillCheck;
+            WBIResourceConverter.repairsRequireResources = repairsRequireResources;
+            WBIResourceConverter.partsCanBreak = partsCanBreak;
+            WBIResourceConverter.requireSkillCheck = requireSkillCheck;
         }
 
     }
