@@ -19,6 +19,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 namespace WildBlueIndustries
 {
+    [KSPModule("Skylab")]
     public class ModuleMarkOneLab : WBIMultiConverter
     {
         [KSPField]
@@ -44,6 +45,12 @@ namespace WildBlueIndustries
         public override void RedecorateModule(bool loadTemplateResources = true)
         {
             base.RedecorateModule(loadTemplateResources);
+            updateScienceLab();
+            updateWorkshop();
+        }
+
+        protected void updateScienceLab()
+        {
             bool enableMPLModules = false;
 
             if (CurrentTemplate.HasValue("enableMPLModules"))
@@ -52,7 +59,13 @@ namespace WildBlueIndustries
             ModuleScienceLab sciLab = this.part.FindModuleImplementing<ModuleScienceLab>();
             if (sciLab != null)
             {
-                if (enableMPLModules)
+                if (HighLogic.LoadedSceneIsEditor)
+                {
+                    sciLab.isEnabled = false;
+                    sciLab.enabled = false;
+                }
+
+                else if (enableMPLModules)
                 {
                     sciLab.isEnabled = true;
                     sciLab.enabled = true;
@@ -64,14 +77,38 @@ namespace WildBlueIndustries
                     sciLab.isEnabled = false;
                     sciLab.enabled = false;
                 }
+            }
+        }
 
+        protected void updateWorkshop()
+        {
+            PartModule oseWorkshop = null;
+            PartModule oseRecycler = null;
+            bool enableWorkshop = false;
+
+            //See if the workshop is enabled.
+            if (CurrentTemplate.HasValue("enableWorkshop"))
+                enableWorkshop = bool.Parse(CurrentTemplate.GetValue("enableWorkshop"));
+
+            //Find the workshop modules
+            foreach (PartModule pm in this.part.Modules)
+            {
+                if (pm.moduleName == "OseModuleWorkshop")
+                    oseWorkshop = pm;
+                else if (pm.moduleName == "OseModuleRecycler")
+                    oseRecycler = pm;
             }
 
-            ModuleScienceConverter converter = this.part.FindModuleImplementing<ModuleScienceConverter>();
-            if (converter != null)
+            if (oseWorkshop != null)
             {
-                converter.isEnabled = enableMPLModules;
-                converter.enabled = enableMPLModules;
+                oseWorkshop.enabled = enableWorkshop;
+                oseWorkshop.isEnabled = enableWorkshop;
+            }
+
+            if (oseRecycler != null)
+            {
+                oseRecycler.enabled = enableWorkshop;
+                oseRecycler.isEnabled = enableWorkshop;
             }
         }
     }
