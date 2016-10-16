@@ -27,44 +27,20 @@ namespace WildBlueIndustries
 
         protected void checkForUpgrade()
         {
-            //If the player hasn't unlocked the upgradeTech node yet, then hide the RCS functionality.
-            if (ResearchAndDevelopment.Instance != null && !string.IsNullOrEmpty(upgradeTech))
-            {
-                WBIConvertibleStorage storage = this.part.FindModuleImplementing<WBIConvertibleStorage>();
-
-                //If the tech node hasn't been researched yet then hide the RCS module and meshes
-                if (ResearchAndDevelopment.GetTechnologyState(upgradeTech) == RDTech.State.Available)
-                    storage.SetGUIVisible(true);
-                else
-                    storage.SetGUIVisible(false);
-            }
-        }
-
-        public void RemoveParentHeatShielding()
-        {
-            List<PartResource> doomedResources = new List<PartResource>();
-
-            if (this.part.parent == null)
+            if (HighLogic.CurrentGame.Mode == Game.Modes.SANDBOX)
                 return;
 
-            //Look for ablative shielding in the parent part and remove it.
-            //The backseat will have the shielding.
-            foreach (PartResource resource in this.part.parent.Resources)
-            {
-                if (resource.resourceName == "Ablator")
-                {
-                    resource.amount = 0.001;
-                    resource.maxAmount = 0.001;
-                    doomedResources.Add(resource);
-                }
-            }
-            foreach (PartResource doomed in doomedResources)
-                this.part.Resources.list.Remove(doomed);
-        }
+            WBIConvertibleStorage storage = this.part.FindModuleImplementing<WBIConvertibleStorage>();
 
-        public void OnEditorAttach()
-        {
-            RemoveParentHeatShielding();
+            //If the player hasn't unlocked the upgradeTech node yet, then hide the resource switcher.
+            if (ResearchAndDevelopment.GetTechnologyState(upgradeTech) == RDTech.State.Available)
+            {
+                storage.SetGUIVisible(true);
+            }
+            else
+            {
+                storage.SetGUIVisible(false);
+            }
         }
 
         public override void SetupAnimations()
@@ -78,10 +54,6 @@ namespace WildBlueIndustries
         public override void OnStart(StartState state)
         {
             base.OnStart(state);
-
-            this.part.OnEditorAttach += OnEditorAttach;
-
-            RemoveParentHeatShielding();
 
             //Upgrade: carry cargo
             checkForUpgrade();

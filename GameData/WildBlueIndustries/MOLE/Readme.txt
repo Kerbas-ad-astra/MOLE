@@ -29,6 +29,81 @@ Copy the contents of the zip file to your GameData directory. Be sure to overwri
 
 ---REVISION HISTORY---
 
+1.2.9
+- Added collider to the Interstage Service Compartment's crew tube.
+- Slightly widened the 1.875m heat shield collider and 2.5m heat shield colliders.
+- Updated Module Manager
+- Updated Wild Blue Tools
+- Updated conversion ratios for Snacks
+- Updated support for USI-LS
+
+1.2.8
+- The stock Experiment Storage Unit can now store a station experiment.
+- Moved game settings to the Wild Blue tab in the Game Difficulty screen.
+
+Docking ports
+- You can now weld docking ports together. Your docked vessels become one craft. Combine with autostrut to make a solid craft. Once welded together, you can no longer undock the ports.
+The Wild Blue tab under the Game Difficulty screen has the following options for docking port welding:
+* Require an EVA to weld the ports (default: true): If false, you can weld the ports without requiring an EVA.
+* Require the repair skill to weld ports (default: true): if false, anybody can perform the weld.
+* Keep docking ports after the weld (default: false): If false, then after welding, the docking ports vanish and the parts are moved together to close the gap. If true, then the docking ports remain in place but will become unusable.
+Thanks for showing me how its done, Shadowmage! :)
+
+1.2.7
+- Fixed crashing issues with experiment manifests.
+
+1.2.6
+- Added experiment slots to the Backseat's Crew configuration, and increased the experiment slots in its Science configuration.
+- Added KSP's new part categories to the BOW's list of categories for OSE Workshop.
+- The Bigby Crew Module's RCS thrusters fire properly now.
+
+1.2.5
+- Creating new experiments now requires a connection back to Kerbin.
+- Added transmitters to the Station Hub and Solar Observatory.
+- The 1.875m Titan Fairing now has truss attachment nodes.
+- Moved parts to the new part categories.
+
+1.2.4
+- Updated RCS effects for the WB400 and Bigby Crew Module.
+
+1.2.3
+
+Cryo Engines
+- Titan tanks and wet workshops can be upgraded with zero boiloff technology.
+
+ISC
+- Updated RCS thrusters to newer part modules.
+
+1.2.1
+- Updated the part upgrades based upon newfound knowledge. Thanks NathanKell, blowfish, and JPLRepo! :)
+
+1.2
+Updated to KSP 1.2 pre-release. Expect additional patches as KSP is fixed and mods are updated. When reporting bugs, please make sure they aren't issues with KSP itself.
+
+Part Upgrades
+- Many parts now have part upgrades.
+KNOWN ISSUE: part upgrade purchasing isn't showing up in the tech tree. Not sure why.
+
+Redecorating & Converters
+- For the modules that used to require Engineers, now any class that has the ConverterSkill qualifies to reconfigure modules. For modules that used to require Scientists, now any class with the ScienceSkill qualifies to reconfigure the modules. Ditto for converters.
+- Fixed an issue where the Glykerol Lab would despawn the IVA.
+
+Greenhouses
+- Growth time is no longer reduced based upon experienced Scientists. Yield is still affected by experience though.
+- Greenhouses now show where they're at in the growth cycle.
+- The MOBL's Botany Lab now produces Plants from Dirt, Mulch and Fertilizer; Water is no longer required.
+
+USI-LS
+- Replaced Water usage with Dirt. Apparently Fertilizer is mostly water.
+- Adjusted the resource consumption amounts to be comparable with stock USI-LS.
+- While Dirt is an extra added resource, it accounts for the possibility of improved yields.
+
+Station Experiments
+- Updated science defs. Thanks DStaal! :)
+
+Wet Workshops
+- Added support for CryoFuels. Thanks for the suggestion, CobaltWolf! :)
+
 1.1 The Tires Kick Back
 NOTE: Parts in the Deprecated folder have been removed. Be sure to retire older vessels that use the deprecated parts, or copy the Deprecated folder from a previous version of MOLE.
 
